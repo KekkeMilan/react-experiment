@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Link, Route, Routes } from "react-router-dom";
+import List from "./pages/list";
+import Fibonacci from "./pages/fibonacci";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-row">
+      <nav className="flex h-screen flex-col border-r border-gray-300 p-4 text-4xl">
+        <Link to="/list">List</Link>
+        <Link to="/fibonacci">Fibonacci</Link>
+      </nav>
+
+      <div className="pl-5">
+        <Routes>
+          <Route path="/list" element={<List />} />
+          <Route path="/fibonacci" element={<Fibonacci />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
